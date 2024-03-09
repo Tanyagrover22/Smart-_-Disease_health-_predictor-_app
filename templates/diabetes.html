@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Disease Prediction</title>
+   <style>
+    /* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    
+    background-color: #f4f4f4;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+header {
+    background-color: #0040ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.prediction-form {
+    text-align: center;
+    background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+}
+
+.prediction-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.prediction-form input[type="number"], .prediction-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prediction-form button {
+    background-color: #0040ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prediction-form button:hover {
+    background-color: #0040ff;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #0040ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+   </style>
+</head>
+<body>
+    <header>
+        <h1>Diabetes Disease Prediction</h1>
+    </header>
+    <main>
+        <section class="prediction-form">
+            <h2>Enter Symptoms</h2><br>
+            <br>
+            <form id="symptom-form">
+                <label for="pregnancies">Number of Pregnancies:</label>
+                <input type="number" id="pregnancies" name="pregnancies" required , placeholder="No. of Pregnancies">
+                <br><br>
+                <label for="glucose">Glucose Level:</label>
+                <input type="number" id="glucose" name="glucose" required, placeholder="Glucose"><br><br>   
+                <label for="blood-pressure">Blood Pressure:</label>
+                <input type="number" id="blood-pressure" name="blood-pressure" required, placeholder="Blood Pressure (in mmHg)">><br><br>
+                <label for="skin-thickness">Skin Thickness:</label>
+                <input type="number" id="skin-thickness" name="skin-thickness" required ,placeholder="Skin Thickness (in mm)">
+                <br><br>
+                <label for="Insulin">Insulin:</label>
+                <input type="number" id="Insulin" name="Insulin" required, placeholder="Insulin (in µU/ml)"><br><br>
+                <label for="BMI">BMI:</label>
+                <input type="number" id="BMI" name="BMI" required, placeholder="BMI"><br><br>
+                <label for="Diabetes Pedigree Function">Diabetes Pedigree Function :</label>
+                <input type="number" name="Diabetes Pedigree Function" id="Diabetes Pedigree Function" required, placeholder="Diabetes Pedigree Function">
+                <label for="Age">Age :</label>
+                <input type="number" name="Age" id="Age" required, placeholder="Age(in years)">
+                
+                <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Diabetes Disease Prediction</p>
+    </footer>
+    <script >document.getElementById('symptom-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Retrieve symptom values
+        var age = parseInt(document.getElementById('age').value);
+        var sex = parseInt(document.getElementById('sex').value);
+        // Add more parameters as needed
+        
+        // Send the symptoms to the backend for prediction
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                age: age,
+                sex: sex
+                // Add more parameters as needed
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the prediction result
+            document.getElementById('prediction-result').innerHTML = "<p>Prediction: " + data.prediction + "</p>";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('prediction-result').innerHTML = "<p>Error predicting heart disease.</p>";
+        });
+    });</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart_Health Predictor App</title>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico?v=2"  />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <style>
+    /* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color:#0040ff;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.intro, .prediction-form, .login-form {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.intro h2, .prediction-form h2, .login-form h2 {
+    margin-bottom: 10px;
+}
+
+.prediction-form label, .login-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.prediction-form input[type="text"], .prediction-form input[type="password"], .login-form input[type="text"], .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prediction-form button, .login-form button {
+    background-color:#0040ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prediction-form button:hover, .login-form button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color:#0040ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+  </style>
+</head>
+<body>
+    <header>
+        <h1 >Smart Health Predictor</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="patient_dashboard.html">Patient</a>
+            <a href="doctor_dahboard.html">Doctor</a>
+        </nav>
+    </header>
+    <main>
+       <h1 style="  animation: slideIn 0.5s forwards;"@keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }>Smart-Health Predictor App</h1>
+        <h2>Be Your own Doctor!!!</h2>
+        
+            
+        <section class="login-form">
+            
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="#">
+                    <div class="input-container">
+                        <input type="text" placeholder="Username" required>
+                    </div>
+                    <div class="input-container">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Smart Health Predictor</p>
+        <center>
+            <ul style="list-style-type:none;">
+            <li><p style="color: white;">Made with <span style="color: red;">&hearts;</span> by Tanya, Prashant, and Harshit</p></li>
+          </ul>
+        </center>
+    </footer>
+
+    <script >
+       
+    
+        document.getElementById('symptom-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Simulating prediction result
+    var symptoms = document.getElementById('symptoms').value;
+    var result = "Prediction: Based on the symptoms entered, you are likely to have X disease.";
+    
+    document.getElementById('prediction-result').innerHTML = result;
+});
+
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Here you can add logic for login authentication
+    // For simplicity, let's just redirect to the main page after successful login
+    window.location.href = "index.html";
+});
+    </script>
+</body>
+</html>
+    
+</body>
+</html>

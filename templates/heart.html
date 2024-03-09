@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        /* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+header {
+    background-color: #0040ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.cover animations{ animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.prediction-form {
+    text-align: center;
+      background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+}
+
+.prediction-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.prediction-form input[type="number"], .prediction-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prediction-form button {
+    background-color:#0040ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prediction-form button:hover {
+    background-color: #555;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #0040ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Heart Disease Prediction</h1>
+    </header>
+    <main class="cover animations"
+    >
+<section class="prediction-form">
+            <h2>Enter Symptoms</h2><br><br>
+            <form id="symptom-form">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required, placeholder="Age(in years)"><br><br>
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required >
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select><br><br>
+                <label for="Chest Pain Type">Chest Pain Type :</label>
+                <input type="number" name="Chest Pain Type" id="Chest Pain Type" placeholder="Chest Pain Type"><br><br>
+                <label for="Resting Blood Pressure">Resting Blood Pressure :</label>
+                <input type="number" name="Resting Blood Pressure" id="Resting Blood Pressure", required placeholder="Resting Blood Pressure (in mm Hg)"><br><br>
+                <label for="Fasting Blood Sugar">Fasting Blood Sugar :</label>
+                <input type="number" name="Fasting Blood Sugar" id="Fasting Blood Sugar" required, placeholder="Fasting Blood Sugar120 mg/dl (1 = True; 0 = False)"><br><br>
+                <label for="Resting Electrocardiograph Results">Resting Electrocardiograph Results :</label>
+                <input type="number" name="Resting Electrocardiograph Results" id="Resting Electrocardiograph Results" required, placeholder="Resting Electrocardiograph Results"><br><br>
+                <label for="Maximum Heart Rate Achieved">Maximum Heart Rate Achieved :</label>
+                <input type="number" name="Maximum Heart Rate Achieved" id="Maximum Heart Rate Achieved" required, placeholder="Maximum Heart Rate Achieved"><br><br>
+                <label for="Exercise Induced Angina">Exercise Induced Angina :</label>
+                <input type="number" name="Exercise Induced Angina" id="Exercise Induced Angina" required placeholder="Exercise Induced Angina (1 = Yes; 0 = No)"><br><br>
+                <label for="ST Depression Induced by Exercise Relative to Rest">ST Depression Induced by Exercise Relative to Rest :</label>
+                <input type="number" name="ST Depression Induced by Exercise Relative to Rest" id="ST Depression Induced by Exercise Relative to Rest" required, placeholder="ST Depression Induced by Exercise Relative to Rest"><br><br>
+               <label for="The Slope of the Peak Exercise ST Segment">The Slope of the Peak Exercise ST Segment :</label>
+               <input type="number" name="The Slope of the Peak Exercise ST Segment" id="The Slope of the Peak Exercise ST Segment" required, placeholder="The Slope of the Peak Exercise ST Segment"><br><br>
+               <label for="Number of Major Vessels (0-3) Colored by Fluoroscopy">"Number of Major Vessels (0-3) Colored by Fluoroscopy</label>
+               <input type="number" name="Number of Major Vessels (0-3) Colored by Fluoroscopy" id="Number of Major Vessels (0-3) Colored by Fluoroscopy" required, placeholder="Number of Major Vessels (0-3) Colored by Fluoroscopy"><br><br>
+               <label for="Thal: 1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect">Thal: 1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect</label>
+               <input type="number" name="Thal: 1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect" id="Thal: 1 = Normal; 2 = Fixed Defect; 3 = Reversible Defect">
+                <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Heart Disease Prediction</p>
+    </footer>
+    <script >document.getElementById('symptom-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Retrieve symptom values
+        var age = parseInt(document.getElementById('age').value);
+        var sex = parseInt(document.getElementById('sex').value);
+    
+        // Add more parameters as needed
+        
+        // Send the symptoms to the backend for prediction
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                age: age,
+                sex: sex
+                // Add more parameters as needed
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the prediction result
+            document.getElementById('prediction-result').innerHTML = "<p>Prediction: " + data.prediction + "</p>";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('prediction-result').innerHTML = "<p>Error predicting heart disease.</p>";
+        });
+    });</script>
+</body>
+</html>

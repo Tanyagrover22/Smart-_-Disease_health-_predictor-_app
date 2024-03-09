@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <style>
+        /* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0040ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.prediction-form {
+    text-align: center;
+    background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+}
+
+.prediction-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.prediction-form input[type="number"], .prediction-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prediction-form button {
+    background-color:#0040ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prediction-form button:hover {
+    background-color:#0040ff;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color:#0040ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Breast Cancer Prediction</h1>
+    </header>
+    <main>
+        <section class="prediction-form">
+            <h2>Enter Symptoms</h2><br><br>
+            <form id="symptom-form">
+                <label for="radius-mean">Radius Mean:</label>
+                <input type="number" id="radius-mean" name="radius-mean" ,required , placeholder="Radius Mean">
+                <br><br>
+                <label for="texture-mean">Texture Mean:</label>
+                <input type="number" id="texture-mean" name="texture-mean", required , placeholder="Texture_mean">
+                <br><br>
+                <!-- Add more input fields for other parameters -->
+                <label for="compactness_mean">Compactness_Mean :</label>
+                <input type="number" name="compactness_mean" id="compactness_mean" , required, placeholder="compactness_mean"><br><br>
+            <label for="Concave Points Mean">Concave Points Mean</label>
+            <input type="number" name="Concave Points Mean" id="Concave Points Mean" ,required, placeholder="Concave Points Mean"><br><br>
+            <label for="Symmetry Mean">Symmetry Mean</label>
+            <input type="number" name="Symmetry Mean" id="Symmetry Mean", required, placeholder="Symmetry Mean"><br><br>
+            <label for="Fractal Dimension Mean">Fractal Dimension Mean :</label>
+            <input type="number" name="Fractal Dimension Mean" id="Fractal Dimension Mean" ,required , placeholder="Fractal Dimension Mean"><br><br>
+            <label for="Texture Standard Error">Texture Standard Error</label>
+            <input type="number" name="Texture Standard Error" id="Texture Standard Error" ,required , placeholder="Texture Standard Error"><br><br>
+            <label for="Area Standard Error">Area Standard Error :</label>
+            <input type="number" name="Area Standard Error" id="Area Standard Error" ,required , placeholder="Area Standard Error"><br><br>
+            <label for="Smoothness Standard Error">Smoothness Standard Error :</label>
+            <input type="number" name="Smoothness Standard Error" id="Smoothness Standard Error", required , placeholder="Smoothness Standard Error"><br><br>
+            <label for="Compactness Standard Error">Compactness Standard Error:</label>
+            <input type="number" name="Compactness Standard Error" id="Compactness Standard Error" ,required, placeholder="Compactness Standard Error"><br><br>
+            <label for="Concavity Standard Error">Concavity Standard Error :</label>
+            <input type="number" name="Concavity Standard Error" id="Concavity Standard Error" ,required, placeholder="Concavity Standard Error"><br><br>
+            <label for="Concave Points Standard Error">Concave Points Standard Error :</label>
+            <input type="number" name="Concave Points Standard Error" id="Concave Points Standard Error", required , placeholder="Concave Points Standard Error"><br><br>
+            <label for="Symmetry Standard Error">Symmetry Standard Error :</label>
+            <input type="number" name="Symmetry Standard Error" id="Symmetry Standard Error" , required , placeholder="Symmetry Standard Error"><br><br>
+            <label for="Fractal Dimension Standard Error">Fractal Dimension Standard Error :</label>
+            <input type="number" name="Fractal Dimension Standard Error" id="Fractal Dimension Standard Error" ,required , placeholder="Fractal Dimension Standard Error"><br><br>
+            <label for="Texture Worst">Texture Worst :</label>
+            <input type="number" name="Texture Worst" id="Texture Worst" ,required , placeholder="Texture Worst"><br><br>
+            <label for="Area Worst">Area Worst :</label>
+            <input type="number" name="Area Worst" id="Area Worst",required, placeholder="Area Worst"><br><br>
+            <label for="Compactness Worst">Compactness Worst :</label>
+            <input type="number" name="Compactness Worst" id="Compactness Worst", required, placeholder="Compactness Worst"><br><br>
+            <label for="Concavity Worst">Concavity Worst :</label>
+            <input type="number" name="Concavity Worst" id="Concavity Worst" , required, placeholder="Concavity Worst"><br><br>
+            <label for="Concave Points Wors">Concave Points Worst :</label>
+            <input type="number" name="Concave Points Wors" id="Concave Points Wors" required, placeholder="Concave Points Worst"><br><br>
+            <label for="Symmetry Worst">Symmetry Worst :</label>
+            <input type="number" name="Symmetry Worst" id="Symmetry Worst" , required, placeholder="Symmetry Worst"><br><br>
+            <label for="Fractal Dimension Worst">Fractal Dimension Worst :</label>
+            <input type="number" name="Fractal Dimension Worst" id="Fractal Dimension Worst", required, placeholder="Fractal Dimension Worst">
+
+
+            <button type="submit">Predict</button>
+            </form>
+            <div id="prediction-result"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Breast Cancer Prediction</p>
+    </footer>
+    <script >document.getElementById('symptom-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Retrieve symptom values
+        var age = parseInt(document.getElementById('age').value);
+        var sex = parseInt(document.getElementById('sex').value);
+        // Add more parameters as needed
+        
+        // Send the symptoms to the backend for prediction
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                age: age,
+                sex: sex
+                // Add more parameters as needed
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the prediction result
+            document.getElementById('prediction-result').innerHTML = "<p>Prediction: " + data.prediction + "</p>";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('prediction-result').innerHTML = "<p>Error predicting heart disease.</p>";
+        });
+    });</script>
+</body>
+</html></script>
+</body>
+</html>

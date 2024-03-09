@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Disease Prediction</title>
+    <style>
+         /* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #0040ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.prediction-form {
+    text-align: center;
+    background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+}
+
+.prediction-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.prediction-form input[type="number"], .prediction-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.prediction-form button {
+    background-color: #0040ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prediction-form button:hover {
+    background-color: #0040ff;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #0040ff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+   </style>
+      
+<body>
+    <body>
+        <header>
+            <h1>Liver Disease Prediction</h1>
+        </header>
+        <main>
+            <section class="prediction-form">
+                <h2>Enter Symptoms</h2><br>
+                <br>
+        <form id="predictionForm">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <label for="totalBilirubin">Total Bilirubin:</label>
+            <input type="number" id="totalBilirubin" name="totalBilirubin" required , placeholder="Enter the totalBilirubin ">
+            <label for="alkalinePhosphotase">Alkaline Phosphotase:</label>
+            <input type="number" id="alkalinePhosphotase" name="alkalinePhosphotase" required, placeholder="Enter the alkalinePhosphotase">
+             
+            <button type="submit">Predict</button>
+        </form>
+        <div id="prediction-result"></div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Liver Disease Prediction</p>
+</footer>
+
+    <script>
+        function predict() {
+            var age = document.getElementById("age").value;
+            var gender = document.getElementById("gender").value;
+            var totalBilirubin = document.getElementById("totalBilirubin").value;
+            var alkalinePhosphotase = document.getElementById("alkalinePhosphotase").value;
+
+            // Perform prediction logic here
+            // You can use JavaScript to process the input values and predict liver disease
+            
+            // For demonstration purposes, let's assume the prediction result is "Positive" or "Negative"
+            var predictionResult = (age > 50 && totalBilirubin > 1 && alkalinePhosphotase > 100) ? "Positive" : "Negative";
+            
+            document.getElementById("result").innerHTML = "Prediction Result: " + predictionResult;
+        }
+    </script>
+</body>
+</html>
